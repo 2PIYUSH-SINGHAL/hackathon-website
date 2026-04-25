@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>hack.welham — Inter-School Hackathon 2026</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Special+Elite&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+
+  <svg class="svg-defs" aria-hidden="true">
+    <defs>
+      <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="2" result="noise" seed="3" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <filter id="glitch-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15.5 14" />
+      </symbol>
+      <symbol id="icon-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="8" y1="13" x2="16" y2="13" />
+        <line x1="8" y1="17" x2="12" y2="17" />
+      </symbol>
+      <symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="8" y="2" width="8" height="3" rx="1" />
+        <path d="M5 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1" />
+        <line x1="9" y1="10" x2="15" y2="10" />
+        <line x1="9" y1="14" x2="15" y2="14" />
+        <line x1="9" y1="18" x2="12" y2="18" />
+      </symbol>
+      <symbol id="icon-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+      </symbol>
+      <symbol id="icon-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="22" y1="2" x2="11" y2="13" />
+        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <div id="paper-particles" aria-hidden="true"></div>
+
+  <nav id="navbar" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" id="navLogo">
+        <img src="assets/welham-crest.png" class="nav-crest" alt="" aria-hidden="true">
+        <span data-cfg="organizer.school">Welham Boys' School</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#event">About</a></li>
+        <li><a href="#tracks">Tracks</a></li>
+        <li><a href="#sideshows">Events</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#judges">Judges</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#registration" class="nav-cta">Register</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="hero" class="section-wrap">
+    <div class="hero-inner">
+
+      <div class="taped-card crest-card">
+        <div class="tape"></div>
+        <div class="inner">
+          <div class="crest-img-wrap">
+            <img src="assets/welham-crest.png" alt="Welham Boys' School Crest" id="crestImg" />
+          </div>
+          <div class="crest-label">
+            Welham Boys' School<br />Est. 1937 · Dehradun
+          </div>
+        </div>
+      </div>
+
+      <div class="title-block">
+        <div class="ribbon-wrap">
+          <span class="ribbon" data-cfg="event.ribbon">Inter-School Hackathon · 2026</span>
+        </div>
+        <h1 id="heroTitle">
+          hack.<span class="accent-col italic">welham</span>
+          <span class="sub">/ <em id="heroSubtitle"></em></span>
+        </h1>
+        <div class="hero-meta">
+          <span>⌘ <span data-cfg="event.date">31 July 2026</span></span>
+          <span class="accent-col">⌂ <span data-cfg="event.format">online · nation-wide</span></span>
+          <span>§ three tracks, one night</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#registration" class="btn-primary">Register the team →</a>
+          <span class="hero-scroll-hint">or <span>read the whole notice ↓</span></span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="stamps-col">
+          <div class="stamp stamp-sm"><span>24 HOURS</span></div>
+          <div class="stamp stamp-sm stamp-alt">CLASSES<br />9—12</div>
+        </div>
+        <div class="taped-card hero-notice" style="transform:rotate(1.2deg)">
+          <div class="tape"></div>
+          <div class="hn-inner">
+            <div class="hn-label mono">§ KEY FACTS</div>
+            <div class="hn-row">
+              <span class="hn-key mono">WHEN</span>
+              <span class="hn-val" data-cfg="event.date">31 July 2026</span>
+            </div>
+            <div class="hn-row">
+              <span class="hn-key mono">STARTS</span>
+              <span class="hn-val" data-cfg="event.startTime">09:00 IST</span>
+            </div>
+            <div class="hn-row">
+              <span class="hn-key mono">FORMAT</span>
+              <span class="hn-val" data-cfg="event.format">online · nation-wide</span>
+            </div>
+            <div class="hn-row">
+              <span class="hn-key mono">DEADLINE</span>
+              <span class="hn-val" data-cfg="event.deadline">25 July 2026</span>
+            </div>
+            <div class="hn-row">
+              <span class="hn-key mono">ENTRY</span>
+              <span class="hn-val accent-col"><span data-cfg="event.entryFee">₹499</span>per team</span>
+            </div>
+            <div class="hn-divider"></div>
+            <span class="hn-footer hand">three tracks · one night</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="paper-airplane" aria-hidden="true">
+      <svg width="28" height="28" aria-hidden="true">
+        <use href="#icon-plane" />
+      </svg>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <!-- <span>scroll</span> -->
+      <span class="arrow">↓</span>
+    </div>
+  </section>
+
+  <div id="theme-announce" class="section-wrap" role="banner">
+    <div class="theme-inner">
+      <div class="theme-left">
+        <span class="theme-label mono">§ THEME REVEAL</span>
+        <div class="theme-text">
+          The hackathon <strong>theme</strong> will be revealed
+          <em>one hour prior</em> to kick-off —
+        </div>
+        <span class="theme-when mono" data-cfg="event.themeRevealTime">31 July · 08:00 IST</span>
+      </div>
+      <div class="theme-divider" aria-hidden="true"></div>
+      <div class="theme-countdown">
+        <div class="cd-label-top mono">UNTIL THEME REVEAL</div>
+        <div class="cd-row">
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-days">--</span>
+            <span class="cd-lbl mono">DAYS</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-hours">--</span>
+            <span class="cd-lbl mono">HRS</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-mins">--</span>
+            <span class="cd-lbl mono">MIN</span>
+          </div>
+          <span class="cd-sep" aria-hidden="true">:</span>
+          <div class="cd-unit">
+            <span class="cd-num" id="cd-secs">--</span>
+            <span class="cd-lbl mono">SEC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="event" class="section-wrap">
+    <div class="event-inner">
+      <div class="vert-label" aria-hidden="true">THE EVENT</div>
+
+      <div>
+        <div class="event-grid">
+
+          <div class="event-blurb">
+            <span class="blurb-heading hand">what is this?</span>
+            <p>A 24-hour online hackathon, organised and run by the students of Welham Boys' School, for schools across
+              the country. Build a working thing in one of three tracks, demo it to a panel of judges, make friends,
+              lose sleep, earn a certificate.</p>
+            <p>We supply: mentors, workshops, problem statements, a welcoming chat room. You supply: a team, a laptop,
+              and the ideas.</p>
+            <span class="badge">→ BUILT BY STUDENTS, FOR STUDENTS</span>
+          </div>
+
+          <div class="taped-card event-vital-card-wrap" style="transform:rotate(1.5deg)">
+            <div class="tape"></div>
+            <div class="event-vital-card">
+              <div class="card-label">WHEN</div>
+              <div class="card-val" data-cfg="event.date">31 July 2026</div>
+              <div class="card-sub"><span data-cfg="event.startTime">09:00 IST</span> start<br />24 hours, straight.</div>
+            </div>
+          </div>
+
+          <div class="taped-card event-vital-card-wrap" style="transform:rotate(-2deg)">
+            <div class="tape"></div>
+            <div class="event-vital-card">
+              <div class="card-label">WHERE</div>
+              <div class="card-val">Online<br />everywhere</div>
+              <div class="card-sub">Zoom link sent<br />on registration.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="stats-strip" id="statsStrip"></div>
+
+        <div class="supply-grid">
+          <div class="supply-box">
+            <span class="box-label acc">WE SUPPLY</span>
+            <ul>
+              <li><span class="bullet">✓</span> Mentors on call</li>
+              <li><span class="bullet">✓</span> Live workshops</li>
+              <li><span class="bullet">✓</span> Problem statements</li>
+              <li><span class="bullet">✓</span> Zoom server</li>
+              <li><span class="bullet">✓</span> Judging panel</li>
+              <li><span class="bullet">✓</span> Certificates</li>
+            </ul>
+          </div>
+          <div class="supply-divider">&amp;</div>
+          <div class="supply-box dashed">
+            <span class="box-label inv">YOU BRING</span>
+            <ul>
+              <li><span class="bullet ink-bullet">•</span> A team of 2–4</li>
+              <li><span class="bullet ink-bullet">•</span> One laptop each</li>
+              <li><span class="bullet ink-bullet">•</span> Stable internet</li>
+              <li><span class="bullet ink-bullet">•</span> A Zoom handle</li>
+              <li><span class="bullet ink-bullet">•</span> Ideas, half-baked</li>
+              <li><span class="bullet ink-bullet">•</span> Enthusiasm</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tracks" class="section-wrap">
+    <div class="tracks-header">
+      <div class="eyebrow hand">chose one ↓</div>
+      <h2 class="section-title">the <em>three</em> tracks</h2>
+    </div>
+    <div class="tracks-grid" id="tracksGrid"></div>
+  </section>
+
+  <section id="sideshows" class="section-wrap">
+    <div class="sideshows-bg-img" aria-hidden="true"></div>
+    <div class="sideshows-bg-overlay" aria-hidden="true"></div>
+    <div class="sideshows-inner">
+      <div class="sideshows-header">
+        <span class="label mono">§ SIDE-SHOWS</span>
+        <h2>One workshop. <em>Three</em> mini events.</h2>
+      </div>
+      <div class="sideshows-grid" id="sideshowsGrid"></div>
+    </div>
+  </section>
+
+  <section id="timeline" class="section-wrap">
+    <div class="timeline-header">
+      <span class="eyebrow hand">— order of the day —</span>
+      <h2 class="section-title">The timeline.</h2>
+    </div>
+    <div class="htl-outer">
+      <div class="htl-scroll" id="htlScroll">
+        <div class="htl-track" id="timelineTrack"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="judges" class="section-wrap">
+    <div class="judges-bg-img" aria-hidden="true"></div>
+    <div class="judges-bg-overlay" aria-hidden="true"></div>
+    <div class="judges-inner">
+    <h2 class="judges-title">The bench <em>&amp;</em> the scorecard</h2>
+    <div class="judges-grid">
+
+      <div class="judges-panel">
+        <div class="panel-eyebrow hand">our judges →</div>
+        <div class="polaroids-grid" id="judgesGrid"></div>
+      </div>
+
+      <div class="scorecard-panel">
+        <div class="panel-eyebrow hand">← how you are measured</div>
+        <div class="sk-box sk-box-double" style="background:var(--paper)">
+          <div class="scorecard">
+            <div class="sc-header">
+              <span>CRITERION</span>
+              <span>WEIGHT</span>
+              <span>WHAT WE LOOK FOR</span>
+            </div>
+            <div id="scorecardRows"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section-wrap">
+    <div class="faq-header">
+      <span class="section-eyebrow hand">frequently asked</span>
+      <h2 class="section-title">F.A.Q.</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </section>
+
+  <section id="registration" class="section-wrap">
+    <div class="reg-inner">
+
+      <div>
+        <span class="reg-eyebrow hand">to enrol →</span>
+        <h2>Registration <em>guidelines</em></h2>
+        <div class="reg-banner mono">One team per school · filled by the school</div>
+
+        <ol class="reg-steps">
+          <li class="reg-step">
+            <div class="step-num">01</div>
+            <div class="step-text">Teacher-in-charge forms a team of 2–4 students (classes 9–12).</div>
+          </li>
+          <li class="reg-step">
+            <div class="step-num">02</div>
+            <div class="step-text">One team per school — no school may send more than one entry.</div>
+          </li>
+          <li class="reg-step">
+            <div class="step-num">03</div>
+            <div class="step-text">The school (not students) fills and submits the Google Form.</div>
+          </li>
+          <li class="reg-step">
+            <div class="step-num">04</div>
+            <div class="step-text">Download and read the registration guide (PDF) before filling.</div>
+          </li>
+          <li class="reg-step">
+            <div class="step-num">05</div>
+            <div class="step-text">Await confirmation within three working days.</div>
+          </li>
+          <li class="reg-step">
+            <div class="step-num">06</div>
+            <div class="step-text">Attend the briefing call the week prior.</div>
+          </li>
+          <li class="reg-step" style="border-bottom:none">
+            <div class="step-num">07</div>
+            <div class="step-text">Show up on <span data-cfg="event.date">31 July 2026</span>, <span data-cfg="event.startTime">09:00 IST</span>.</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="reg-cards">
+        <div class="taped-card reg-doc-card" style="transform:rotate(2deg)">
+          <div class="tape"></div>
+          <div class="card-step mono">STEP 01 · READ FIRST</div>
+          <div class="card-title">Registration guide <span>.pdf</span></div>
+          <div class="card-body">Everything the teacher-in-charge needs before filling the form. 4 pages, signed consent
+            slip included.</div>
+          <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="btn-doc" download>↓ Download PDF guide</a>
+        </div>
+
+        <div class="taped-card reg-doc-card" style="transform:rotate(-1.5deg)">
+          <div class="tape tape-accent"></div>
+          <div class="card-step mono">STEP 02 · SCHOOL FILLS</div>
+          <div class="card-title">Google Form — <em>register here</em></div>
+          <div class="card-body">Submitted by the teacher-in-charge from a school email. One submission per school.
+          </div>
+          <a href="#" data-cfg-href="event.registrationFormUrl" class="btn-doc accent">Open Google Form ↗</a>
+          <div class="deadline hand">deadline: <span data-cfg="event.deadline">25 July 2026</span> · no late entries
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="downloads" class="section-wrap">
+    <div class="downloads-header">
+      <span class="section-eyebrow hand">— take it with you —</span>
+      <h2 class="section-title">Downloads.</h2>
+    </div>
+    <div class="downloads-grid">
+
+      <div class="taped-card download-card" style="transform:rotate(-1.5deg)">
+        <div class="tape"></div>
+        <div class="dl-icon"><svg width="36" height="36" aria-hidden="true">
+            <use href="#icon-doc" />
+          </svg></div>
+        <div class="dl-title">Brochure</div>
+        <div class="dl-sub hand">hack.welham 2026</div>
+        <div class="dl-body">The official event brochure. Share it with your school, teachers, and friends.</div>
+        <a href="assets/downloads/brochure.pdf" data-cfg-href="downloads.brochure" class="btn-doc" download>↓ Download
+          Brochure</a>
+      </div>
+
+      <div class="taped-card download-card" style="transform:rotate(1.2deg)">
+        <div class="tape tape-accent"></div>
+        <div class="dl-icon"><svg width="36" height="36" aria-hidden="true">
+            <use href="#icon-clipboard" />
+          </svg></div>
+        <div class="dl-title">Event Guidelines</div>
+        <div class="dl-sub hand">rules & conduct</div>
+        <div class="dl-body">Full event rules, code of conduct, judging criteria, and all technical requirements.</div>
+        <a href="assets/downloads/event-guidelines.pdf" data-cfg-href="downloads.guidelines" class="btn-doc accent"
+          download>↓ Download Guidelines</a>
+      </div>
+
+      <div class="taped-card download-card" style="transform:rotate(-0.5deg)">
+        <div class="tape"></div>
+        <div class="dl-icon"><svg width="36" height="36" aria-hidden="true">
+            <use href="#icon-pencil" />
+          </svg></div>
+        <div class="dl-title">Registration Guide</div>
+        <div class="dl-sub hand">for teacher-in-charge</div>
+        <div class="dl-body">Step-by-step registration walkthrough with consent forms and school declaration included.
+        </div>
+        <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="btn-doc"
+          download>↓ Download PDF</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="organisers" class="section-wrap">
+    <div class="org-bg-img" aria-hidden="true"></div>
+    <div class="org-bg-overlay" aria-hidden="true"></div>
+    <div class="org-inner">
+      <div class="org-header">
+        <span class="section-eyebrow hand">— the people behind it —</span>
+        <h2 class="section-title">Organising Team.</h2>
+      </div>
+      <div class="org-grid">
+
+        <div class="org-host">
+          <div class="host-label mono">HOST</div>
+          <div class="host-name" data-cfg="organizer.school">Welham Boys' School</div>
+          <div class="host-sub hand" data-cfg="organizer.schoolSub">Dehradun · Est. 1937</div>
+          <div class="host-body" data-cfg="organizer.body">Organised and run by the Computer Science department and the
+            Tech Society of Welham Boys' School.</div>
+          <div class="host-contact mono">
+            <span data-cfg="organizer.contact">hack@welham.edu.in</span><br />
+            <span data-cfg="organizer.phone">+91 xxx xxx xxxx</span>
+          </div>
+        </div>
+
+        <div class="org-people" id="orgPeople"></div>
+
+      </div>
+      <div class="org-chat" id="orgChat"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <img class="footer-crest" src="assets/welham-crest.png" alt="Welham Boys' School crest" />
+        <div class="footer-content">
+          <div class="footer-name">Welham Boys' School</div>
+          <div class="footer-sub hand">— <span data-cfg="event.date">31 July 2026</span> · online —</div>
+          <div class="footer-links">
+            <div>
+              <div class="col-head mono">Event</div>
+              <a href="#event" class="col-link">About</a>
+              <a href="#tracks" class="col-link">Tracks</a>
+              <a href="#sideshows" class="col-link">Workshops</a>
+              <a href="#timeline" class="col-link">Timeline</a>
+            </div>
+            <div>
+              <div class="col-head mono">People</div>
+              <a href="#organisers" class="col-link">Organisers</a>
+              <a href="#judges" class="col-link">Judges</a>
+            </div>
+            <div>
+              <div class="col-head mono">Support</div>
+              <a href="#faq" class="col-link">FAQ</a>
+              <a href="mailto:hack@welham.edu.in" data-cfg-href="organizer.contactHref" class="col-link">Contact</a>
+            </div>
+            <div>
+              <div class="col-head mono">Downloads</div>
+              <a href="assets/downloads/brochure.pdf" data-cfg-href="downloads.brochure" class="col-link" download>Brochure</a>
+              <a href="assets/downloads/event-guidelines.pdf" data-cfg-href="downloads.guidelines" class="col-link" download>Guidelines</a>
+              <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="col-link" download>Reg. Guide</a>
+              <a href="mailto:hack@welham.edu.in" data-cfg-href="organizer.contactHref" class="col-link">hack@welham.edu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 · welham boys' school</span>
+        <span>built by students, for students</span>
+        <span data-cfg="organizer.motto">From Strength to Strength</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="easter-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="Secret message">
+    <div class="easter-box">
+      <button class="easter-close" id="easterClose" aria-label="Close">✕</button>
+      <div class="easter-content" id="easterContent"></div>
+    </div>
+  </div>
+
+  <noscript>
+    <style>
+      #paper-particles,
+      #paper-airplane {
+        display: none;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      #statsStrip,
+      #tracksGrid,
+      #sideshowsGrid,
+      #timelineTrack,
+      #judgesGrid,
+      #scorecardRows,
+      #faqList,
+      #orgPeople {
+        display: none;
+      }
+    </style>
+    <p style="text-align:center;padding:20px;font-family:Georgia,serif;">Please enable JavaScript for the full
+      experience.</p>
+  </noscript>
+
+  <button id="scrollTop" aria-label="Back to top">↑</button>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
