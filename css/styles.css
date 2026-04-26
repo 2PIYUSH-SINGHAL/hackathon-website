@@ -552,6 +552,31 @@ a {
   display: block;
   width: 100%;
 }
+#theme-announce.theme-revealed .theme-inner {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+  max-width: 100%;
+}
+#theme-announce.theme-revealed .theme-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 64px 40px;
+  border-bottom: 1px solid rgba(234, 223, 199, 0.15);
+  gap: 12px;
+}
+#theme-announce.theme-revealed .theme-text {
+  font-size: clamp(20px, 2.2vw, 30px);
+  text-align: center;
+  font-style: italic;
+}
+#theme-announce.theme-revealed .theme-divider {
+  display: none;
+}
 #theme-announce.theme-revealed .cd-row {
   display: flex !important;
   grid-template-columns: unset !important;
@@ -563,6 +588,14 @@ a {
 #theme-announce.theme-revealed .theme-countdown {
   text-align: center;
   width: 100%;
+}
+#theme-announce.theme-revealed .cd-label-top {
+  display: block;
+  letter-spacing: 0.6em;
+  padding: 24px 0 20px;
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 0;
 }
 
 /* ── HERO */
