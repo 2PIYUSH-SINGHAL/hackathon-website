@@ -863,8 +863,8 @@
 /* ── iPad Air & Pro only (not Mini): footer pinboard ── */
 @media (min-width: 820px) and (max-width: 1024px) {
   .footer-content {
-    grid-template-columns: 1fr 380px;
-    column-gap: 32px;
+    grid-template-columns: 1fr 480px;
+    column-gap: 36px;
   }
   .footer-note {
     display: none;
@@ -872,25 +872,35 @@
   .footer-pinboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
-    gap: 14px 12px;
-    align-content: center;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px 16px;
+    align-content: stretch;
     background: rgba(120, 85, 45, 0.1);
     border: 1px solid rgba(120, 85, 45, 0.18);
     border-radius: 4px;
-    padding: 18px 16px;
+    padding: 24px 20px;
   }
   .fp-note {
-    padding: 12px 12px 14px;
+    padding: 16px 15px 18px;
+    gap: 5px;
+  }
+  .fp-pin {
+    width: 13px;
+    height: 13px;
+    top: -8px;
   }
   .fp-role {
-    font-size: 9px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
   }
   .fp-name {
-    font-size: 12px;
+    font-size: 15px;
+    padding-bottom: 6px;
+    margin-bottom: 4px;
   }
   .fp-msg {
-    font-size: 14px;
+    font-size: 17px;
+    line-height: 1.5;
   }
 }
 
