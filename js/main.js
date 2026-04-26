@@ -195,7 +195,7 @@
         </button>
         <div class="chat-content">
           <div class="chat-name">${p.name}</div>
-          <div class="chat-bubble" style="transform:rotate(${rot}deg)">
+          <div class="chat-bubble">
             <span class="chat-role mono">${p.role}</span>
             <span class="chat-sub">${p.sub}</span>
           </div>
@@ -206,6 +206,13 @@
 
     el.querySelectorAll(".chat-avatar[data-person]").forEach((btn) => {
       btn.addEventListener("click", () => {
+        const row = btn.closest(".chat-msg");
+        if (row) {
+          row.classList.remove("pushed");
+          void row.offsetWidth;
+          row.classList.add("pushed");
+          row.addEventListener("animationend", () => row.classList.remove("pushed"), { once: true });
+        }
         openPersonCard(CONFIG.team[+btn.dataset.person]);
       });
     });
@@ -224,6 +231,8 @@
         <div class="pc-name">${p.name}</div>
         <div class="pc-sub hand">${p.sub}</div>
       </div>`;
+    const cardRot = (Math.random() * 8 - 4).toFixed(2);
+    card.style.transform = `rotate(${cardRot}deg)`;
     overlay.classList.remove("hidden");
     applyImages();
     card.querySelector(".pc-close").addEventListener("click", () => overlay.classList.add("hidden"));
@@ -841,10 +850,10 @@
       </div>`);
     });
 
-    // Click the registration CTA button 4 times
+    // Click the nav "Register Now" button 4 times
     let regClicks = 0,
       regTimer;
-    document.querySelector(".btn-primary")?.addEventListener("click", (e) => {
+    document.querySelector(".nav-cta")?.addEventListener("click", (e) => {
       regClicks++;
       clearTimeout(regTimer);
       regTimer = setTimeout(() => {
@@ -975,7 +984,7 @@
         showEaster(`<div class="easter-motto">
         <div class="em-latin">THREE TRACKS.</div>
         <div class="em-trans">One night. Zero excuses.</div>
-        <div class="em-note">AI. Web. Cloud. Pick the one that makes you most nervous. That's probably the right one.</div>
+        <div class="em-note">AI. Web. Game. Pick the one that makes you most nervous. That's probably the right one.</div>
         <div class="em-credit">— a friendly challenge</div>
       </div>`);
       });
@@ -1372,6 +1381,36 @@
     initParticles();
     initAirplane();
     initCursorTrail();
+    console.log(
+      "%c hack.welham · secret console %c",
+      "background:#3a2a1a;color:#c8b49a;font-family:monospace;font-size:13px;padding:4px 10px;border-radius:3px 0 0 3px;",
+      "background:#c8b49a;color:#3a2a1a;font-family:monospace;font-size:13px;padding:4px 10px;border-radius:0 3px 3px 0;"
+    );
+    console.log(
+      "%c Typed easter eggs (just type anywhere on the page):\n" +
+      "  hack    · ink-splat all section titles\n" +
+      "  welham  · illuminate the school crest\n" +
+      "  debug   · summon the rubber duck\n" +
+      "  sleep   · not yet\n" +
+      "  coffee  · one more cup\n" +
+      "  team    · your people\n" +
+      "  build   · ship the thing\n" +
+      "  git     · commit (with a real message)\n" +
+      "  help    · ask\n" +
+      "  lost    · that's okay\n" +
+      "  idea    · that one\n" +
+      "  panic   · breathe\n" +
+      "  night   · the night\n" +
+      "  done    · ship it\n" +
+      "  stuck   · walk away\n" +
+      "  ship    · launch\n" +
+      "  win     · already\n" +
+      "  why     · good question\n\n" +
+      " Konami code:\n" +
+      "  ↑ ↑ ↓ ↓ ← → ← → B A\n\n" +
+      " Click eggs: crest · logo (×3) · stamp · ribbon · badge · tape · & · countdown \":\" · footer · polaroid (×3) · and more…",
+      "color:#a8622f;font-family:monospace;font-size:11px;line-height:1.7;"
+    );
     initKonami();
     initCrestEgg();
     initTypingEgg();
@@ -1392,3 +1431,4 @@
     ? document.addEventListener("DOMContentLoaded", init)
     : init();
 })();
+

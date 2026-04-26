@@ -127,7 +127,7 @@ const CONFIG = {
       side: "right",
       time: "DAY 1 · 12:00",
       head: "Workshop",
-      desc: "Intro to building with LLMs (optional).",
+      desc: "Git & GitHub primer — version control basics (optional).",
     },
     {
       side: "left",
@@ -237,7 +237,7 @@ const CONFIG = {
     },
     {
       q: "Do I need prior coding experience?",
-      a: "We recocmend at least one team member being be able to code. The rest may be designers, writers, or idea people.",
+      a: "We recommend at least one team member being able to code. The rest may be designers, writers, or idea people.",
     },
     {
       q: "Where is the hackathon held?",
