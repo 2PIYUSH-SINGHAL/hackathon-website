@@ -553,8 +553,12 @@ a {
   width: 100%;
 }
 #theme-announce.theme-revealed .cd-row {
+  display: flex !important;
+  grid-template-columns: unset !important;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  border: none !important;
 }
 #theme-announce.theme-revealed .theme-countdown {
   text-align: center;
