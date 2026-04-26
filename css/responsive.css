@@ -503,6 +503,49 @@
     display: none;
   }
 
+  /* ── revealed state: phone overhaul ── */
+  #theme-announce.theme-revealed {
+    padding: 52px 0 0;
+  }
+  #theme-announce.theme-revealed .theme-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  #theme-announce.theme-revealed .theme-left {
+    padding: 0 28px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+  #theme-announce.theme-revealed .theme-text {
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
+  }
+  #theme-announce.theme-revealed .theme-countdown {
+    width: 100%;
+    padding: 0;
+  }
+  #theme-announce.theme-revealed .cd-label-top {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.55em;
+    padding: 20px 0 18px;
+    border-top: 1px solid rgba(234, 223, 199, 0.15);
+    border-bottom: none;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  #theme-announce.theme-revealed .theme-word {
+    font-size: clamp(72px, 22vw, 108px);
+    padding: 32px 24px 40px;
+    border-top: 1px solid rgba(234, 223, 199, 0.18);
+    border-bottom: none;
+  }
+
   .event-grid {
     grid-template-columns: 1fr;
   }
@@ -921,6 +964,54 @@
   }
   .cd-sep {
     display: none;
+  }
+
+  /* ── revealed state: iPad overhaul ── */
+  #theme-announce.theme-revealed {
+    padding: 0;
+  }
+  #theme-announce.theme-revealed .theme-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 100%;
+  }
+  #theme-announce.theme-revealed .theme-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 52px 64px 44px;
+    border-bottom: 1px solid rgba(234, 223, 199, 0.12);
+    gap: 14px;
+  }
+  #theme-announce.theme-revealed .theme-text {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-style: italic;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #theme-announce.theme-revealed .theme-countdown {
+    width: 100%;
+    text-align: center;
+  }
+  #theme-announce.theme-revealed .cd-label-top {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.6em;
+    padding: 28px 0 24px;
+    border-bottom: none;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  #theme-announce.theme-revealed .theme-word {
+    font-size: clamp(100px, 18vw, 180px);
+    padding: 40px 0 56px;
+    border-top: 3px double rgba(234, 223, 199, 0.2);
+    border-bottom: none;
+    letter-spacing: 0.06em;
   }
 
   /* footer note: fixed 200px square */

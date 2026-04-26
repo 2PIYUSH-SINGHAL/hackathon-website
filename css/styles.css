@@ -485,12 +485,13 @@ a {
   min-width: 60px;
 }
 .cd-num {
-  font-family: var(--f-mono);
+  font-family: var(--f-display);
   font-size: 46px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--paper);
+  opacity: 1;
 }
 .cd-lbl {
   font-family: var(--f-mono);
@@ -531,16 +532,33 @@ a {
 }
 .theme-word {
   font-family: var(--f-display);
-  font-size: clamp(32px, 6vw, 72px);
+  font-size: clamp(56px, 8vw, 120px);
   font-weight: 700;
   font-style: italic;
   color: var(--paper);
   letter-spacing: 0.04em;
-  line-height: 1.1;
+  line-height: 1;
+  text-align: center;
   animation: themeWordIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  padding: 24px 0;
+  border-top: 1px solid rgba(234, 223, 199, 0.2);
+  border-bottom: 1px solid rgba(234, 223, 199, 0.2);
+  width: 100%;
 }
 .theme-reveal-label {
   color: var(--accent) !important;
+  letter-spacing: 0.55em !important;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+#theme-announce.theme-revealed .cd-row {
+  justify-content: center;
+  width: 100%;
+}
+#theme-announce.theme-revealed .theme-countdown {
+  text-align: center;
+  width: 100%;
 }
 
 /* ── HERO */
