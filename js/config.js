@@ -14,7 +14,7 @@ const CONFIG = {
     entryFee: "₹499",
     themeEncoded: "YXBwbGU=",
     // Theme reveal time in IST (UTC+5:30) — format: "YYYY-MM-DDTHH:MM:SS+05:30"
-    themeRevealUTC: new Date("2026-04-26T12:50:00+05:30").getTime(),
+    themeRevealUTC: new Date("2026-04-26T15:50:00+05:30").getTime(),
   },
 
   assets: {
