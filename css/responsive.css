@@ -725,7 +725,7 @@
 /* ── iPad-only: bigger hero + scoreboard countdown ── */
 @media (min-width: 768px) and (max-width: 1024px) {
 
-  /* navbar: top bar + left slide-in drawer */
+  /* navbar: top bar + right slide-in drawer */
   :root { --nav-h: 64px; }
   .nav-inner {
     position: relative;
@@ -757,6 +757,7 @@
     display: flex !important;
     position: fixed !important;
     top: 0 !important;
+    left: auto !important;
     right: -300px !important;
     bottom: 0 !important;
     width: 280px !important;
