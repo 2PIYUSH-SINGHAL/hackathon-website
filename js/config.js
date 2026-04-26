@@ -13,8 +13,8 @@ const CONFIG = {
     phone: "+91 xxx xxx xxxx",
     entryFee: "₹499",
     themeEncoded: "YXBwbGU=",
-    // Theme reveal time as UTC: Date.UTC(year, month-1, day, hour, min, sec)
-    themeRevealUTC: Date.UTC(2026, 6, 31, 8, 0, 0),
+    // Theme reveal time in IST (UTC+5:30) — format: "YYYY-MM-DDTHH:MM:SS+05:30"
+    themeRevealUTC: new Date("2026-04-26T12:50:00+05:30").getTime(),
   },
 
   assets: {
@@ -49,6 +49,12 @@ const CONFIG = {
     },
     { value: "2–4", label: "per team", sub: "same school", countable: false },
     { value: "9–12", label: "class band", sub: "any school", countable: false },
+    {
+      value: "1",
+      label: "team / school",
+      sub: "one entry only",
+      countable: false,
+    },
     { value: "₹499", label: "entry fee", sub: "per team", countable: false },
   ],
 
@@ -278,7 +284,9 @@ const CONFIG = {
       role: "Lead Organiser",
       name: "Piyush Singhal",
       sub: "Tech Enthusiast",
-      image: "assets/images/team-3.jpg",
+      image:
+        "assets/images/654080599_947231991025727_3647323680011143927_n.jpg",
+      facePosition: "50% 18%",
       rotation: "-1.2deg",
     },
     {

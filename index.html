@@ -139,7 +139,7 @@
             </div>
             <div class="hn-row">
               <span class="hn-key mono">ENTRY</span>
-              <span class="hn-val accent-col"><span data-cfg="event.entryFee">₹499</span>per team</span>
+              <span class="hn-val accent-col"><span data-cfg="event.entryFee">₹499</span> per team</span>
             </div>
             <div class="hn-divider"></div>
             <span class="hn-footer hand">three tracks · one night</span>
@@ -221,7 +221,8 @@
             <div class="event-vital-card">
               <div class="card-label">WHEN</div>
               <div class="card-val" data-cfg="event.date">31 July 2026</div>
-              <div class="card-sub"><span data-cfg="event.startTime">09:00 IST</span> start<br />24 hours, straight.</div>
+              <div class="card-sub"><span data-cfg="event.startTime">09:00 IST</span> start<br />24 hours, straight.
+              </div>
             </div>
           </div>
 
@@ -303,29 +304,29 @@
     <div class="judges-bg-img" aria-hidden="true"></div>
     <div class="judges-bg-overlay" aria-hidden="true"></div>
     <div class="judges-inner">
-    <h2 class="judges-title">The bench <em>&amp;</em> the scorecard</h2>
-    <div class="judges-grid">
+      <h2 class="judges-title">The bench <em>&amp;</em> the scorecard</h2>
+      <div class="judges-grid">
 
-      <div class="judges-panel">
-        <div class="panel-eyebrow hand">our judges →</div>
-        <div class="polaroids-grid" id="judgesGrid"></div>
-      </div>
+        <div class="judges-panel">
+          <div class="panel-eyebrow hand">our judges →</div>
+          <div class="polaroids-grid" id="judgesGrid"></div>
+        </div>
 
-      <div class="scorecard-panel">
-        <div class="panel-eyebrow hand">← how you are measured</div>
-        <div class="sk-box sk-box-double" style="background:var(--paper)">
-          <div class="scorecard">
-            <div class="sc-header">
-              <span>CRITERION</span>
-              <span>WEIGHT</span>
-              <span>WHAT WE LOOK FOR</span>
+        <div class="scorecard-panel">
+          <div class="panel-eyebrow hand">← how you are measured</div>
+          <div class="sk-box sk-box-double" style="background:var(--paper)">
+            <div class="scorecard">
+              <div class="sc-header">
+                <span>CRITERION</span>
+                <span>WEIGHT</span>
+                <span>WHAT WE LOOK FOR</span>
+              </div>
+              <div id="scorecardRows"></div>
             </div>
-            <div id="scorecardRows"></div>
           </div>
         </div>
-      </div>
 
-    </div>
+      </div>
     </div>
   </section>
 
@@ -372,7 +373,8 @@
           </li>
           <li class="reg-step" style="border-bottom:none">
             <div class="step-num">07</div>
-            <div class="step-text">Show up on <span data-cfg="event.date">31 July 2026</span>, <span data-cfg="event.startTime">09:00 IST</span>.</div>
+            <div class="step-text">Show up on <span data-cfg="event.date">31 July 2026</span>, <span
+                data-cfg="event.startTime">09:00 IST</span>.</div>
           </li>
         </ol>
       </div>
@@ -384,7 +386,8 @@
           <div class="card-title">Registration guide <span>.pdf</span></div>
           <div class="card-body">Everything the teacher-in-charge needs before filling the form. 4 pages, signed consent
             slip included.</div>
-          <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="btn-doc" download>↓ Download PDF guide</a>
+          <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="btn-doc"
+            download>↓ Download PDF guide</a>
         </div>
 
         <div class="taped-card reg-doc-card" style="transform:rotate(-1.5deg)">
@@ -505,21 +508,42 @@
             </div>
             <div>
               <div class="col-head mono">Downloads</div>
-              <a href="assets/downloads/brochure.pdf" data-cfg-href="downloads.brochure" class="col-link" download>Brochure</a>
-              <a href="assets/downloads/event-guidelines.pdf" data-cfg-href="downloads.guidelines" class="col-link" download>Guidelines</a>
-              <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide" class="col-link" download>Reg. Guide</a>
-              <a href="mailto:hack@welham.edu.in" data-cfg-href="organizer.contactHref" class="col-link">hack@welham.edu</a>
+              <a href="assets/downloads/brochure.pdf" data-cfg-href="downloads.brochure" class="col-link"
+                download>Brochure</a>
+              <a href="assets/downloads/event-guidelines.pdf" data-cfg-href="downloads.guidelines" class="col-link"
+                download>Guidelines</a>
+              <a href="assets/downloads/registration-guide.pdf" data-cfg-href="downloads.registrationGuide"
+                class="col-link" download>Reg. Guide</a>
+              <a href="mailto:hack@welham.edu.in" data-cfg-href="organizer.contactHref"
+                class="col-link">hack@welham.edu</a>
+            </div>
+          </div>
+          <div class="footer-note taped-card" aria-hidden="true" style="transform:rotate(2deg)">
+            <div class="tape"></div>
+            <div class="fn-inner">
+              <div class="fn-label mono">// a note to all teams</div>
+              <div class="fn-msg hand">to every team,<br>from every school —<br>we're rooting for<br>all of you.<br><br>build something<br>you're proud of.</div>
+              <div class="fn-sign mono">— best of luck · hack.welham</div>
             </div>
           </div>
         </div>
+      </div><!-- /.footer-top -->
+
+      <div class="footer-seal">
+        <span class="footer-motto hand" data-cfg="organizer.motto">From Strength to Strength</span>
+        <span class="footer-finis mono">— hack.welham · mmxxvi —</span>
       </div>
       <div class="footer-bottom">
         <span>© 2026 · welham boys' school</span>
         <span>built by students, for students</span>
-        <span data-cfg="organizer.motto">From Strength to Strength</span>
+        <span class="footer-bottom-email"><a href="mailto:hack@welham.edu.in" data-cfg-href="organizer.contactHref">hack@welham.edu.in</a></span>
       </div>
     </div>
   </footer>
+
+  <div id="personCardOverlay" class="hidden" role="dialog" aria-modal="true" aria-label="Team member profile">
+    <div id="personCard" class="person-card"></div>
+  </div>
 
   <div id="easter-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="Secret message">
     <div class="easter-box">

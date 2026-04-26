@@ -193,9 +193,9 @@ a {
   transform: rotate(0deg) scale(1.1) !important;
 }
 .stamp-sm {
-  width: 116px;
-  height: 116px;
-  font-size: 16px;
+  width: 124px;
+  height: 124px;
+  font-size: 18px;
 }
 .stamp-md {
   width: 130px;
@@ -237,7 +237,7 @@ a {
 }
 .section-label {
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--ink-soft);
@@ -326,8 +326,8 @@ a {
 }
 .nav-links a {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--ink);
@@ -424,8 +424,8 @@ a {
 }
 .theme-label {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.35em;
+  font-size: 12px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(234, 223, 199, 0.5);
   display: block;
@@ -466,8 +466,8 @@ a {
 }
 .cd-label-top {
   font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.35em;
+  font-size: 11px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(234, 223, 199, 0.45);
   margin-bottom: 12px;
@@ -494,8 +494,8 @@ a {
 }
 .cd-lbl {
   font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.3em;
+  font-size: 11px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(234, 223, 199, 0.45);
   margin-top: 5px;
@@ -590,8 +590,8 @@ a {
 }
 .crest-label {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 11px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-top: 12px;
@@ -631,7 +631,7 @@ a {
   flex-wrap: wrap;
   gap: 24px;
   font-family: var(--f-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 36px;
@@ -696,8 +696,8 @@ a {
 }
 .hn-label {
   font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.35em;
+  font-size: 11px;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--ink-soft);
   display: block;
@@ -713,8 +713,8 @@ a {
 }
 .hn-key {
   font-family: var(--f-mono);
-  font-size: 8px;
-  letter-spacing: 0.3em;
+  font-size: 10px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -861,8 +861,8 @@ a {
 }
 .event-vital-card .card-label {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 11px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
@@ -881,13 +881,13 @@ a {
 }
 .stats-strip {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   border: 2px solid var(--ink);
   background: var(--paper);
   margin-bottom: 28px;
 }
 .stat-cell {
-  padding: 22px 14px;
+  padding: 18px 10px;
   text-align: center;
   border-right: 1.5px dashed var(--rule);
   position: relative;
@@ -897,7 +897,7 @@ a {
 }
 .stat-n {
   font-family: var(--f-display);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(24px, 3vw, 38px);
   font-weight: 800;
   color: var(--accent);
   line-height: 1;
@@ -908,12 +908,12 @@ a {
   color: var(--ink);
 }
 .stat-l {
-  font-size: 14px;
-  margin-top: 6px;
+  font-size: 12px;
+  margin-top: 5px;
 }
 .stat-s {
   font-family: var(--f-hand);
-  font-size: 15px;
+  font-size: 13px;
   color: var(--ink-soft);
   margin-top: 2px;
 }
@@ -942,8 +942,8 @@ a {
   left: 18px;
   padding: 2px 10px;
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.25em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   color: var(--paper);
   text-transform: uppercase;
 }
@@ -1024,8 +1024,8 @@ a {
 }
 .track-num {
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  letter-spacing: 0.25em;
   color: var(--ink-soft);
 }
 .track-name {
@@ -1091,9 +1091,9 @@ a {
 }
 .sideshows-header .label {
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.3em;
-  opacity: 0.6;
+  opacity: 0.85;
   display: block;
   margin-bottom: 6px;
 }
@@ -1131,14 +1131,14 @@ a {
 }
 .ws-label {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 13px;
+  letter-spacing: 0.25em;
   color: var(--accent);
 }
 .ws-time {
   font-family: var(--f-mono);
-  font-size: 11px;
-  opacity: 0.7;
+  font-size: 13px;
+  opacity: 0.85;
 }
 .ws-title {
   font-family: var(--f-display);
@@ -1149,19 +1149,19 @@ a {
 }
 .ws-sub {
   font-family: var(--f-hand);
-  font-size: 22px;
+  font-size: 24px;
   color: var(--accent);
   margin-bottom: 14px;
 }
 .ws-body {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
-  opacity: 0.85;
+  opacity: 0.95;
   margin-bottom: 18px;
 }
 .ws-footer {
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--accent);
 }
@@ -1191,28 +1191,28 @@ a {
 }
 .me-badge {
   font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  opacity: 0.6;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  opacity: 0.85;
 }
 .me-title {
   font-family: var(--f-display);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
   line-height: 1.15;
   margin: 10px 0 6px;
 }
 .me-time {
   font-family: var(--f-mono);
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.15em;
   color: var(--accent);
   margin-bottom: 10px;
 }
 .me-body {
-  font-size: 13px;
-  opacity: 0.8;
-  line-height: 1.5;
+  font-size: 15px;
+  opacity: 0.95;
+  line-height: 1.55;
 }
 
 /* ── TIMELINE */
@@ -1319,8 +1319,8 @@ a {
 }
 .tl-time {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   color: var(--accent);
   text-transform: uppercase;
 }
@@ -1332,10 +1332,13 @@ a {
   line-height: 1.15;
 }
 .tl-desc {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--ink-soft);
   margin-top: 3px;
   line-height: 1.4;
+}
+.tl-day-sep {
+  display: none;
 }
 .htl-nav {
   display: flex;
@@ -1434,8 +1437,8 @@ a {
 }
 .pol-role {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-align: center;
   color: var(--ink-soft);
   margin-top: 2px;
@@ -1457,8 +1460,8 @@ a {
   padding-bottom: 10px;
   border-bottom: 2px solid var(--ink);
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
@@ -1590,7 +1593,7 @@ a {
   color: var(--paper);
   padding: 6px 14px;
   font-family: var(--f-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -1632,8 +1635,8 @@ a {
 }
 .card-step {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 6px;
@@ -1778,8 +1781,8 @@ a {
 }
 .host-label {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 4px;
@@ -1832,7 +1835,7 @@ a {
 }
 .person-img {
   width: 100%;
-  height: 110px;
+  aspect-ratio: 1;
   margin-bottom: 8px;
 }
 .person-role {
@@ -1873,7 +1876,119 @@ a {
   border-radius: 50%;
   flex-shrink: 0;
   border: 2px solid var(--ink);
+  background: var(--paper-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.chat-avatar:hover,
+.chat-avatar:focus-visible {
+  background: var(--accent);
+  color: var(--paper);
+  transform: scale(1.12);
+  outline: none;
+}
+.chat-initials {
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* person card overlay (phone team tap) */
+#personCardOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(58, 42, 26, 0.86);
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  animation: easterIn 0.25s ease;
+}
+#personCardOverlay.hidden {
+  display: none;
+}
+.person-card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  max-width: 300px;
+  width: 88%;
+  position: relative;
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: rotate(-1.5deg);
+  overflow: hidden;
+}
+.pc-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
   background: var(--rule) center / cover no-repeat;
+  border-bottom: 2px solid var(--ink);
+  display: block;
+}
+.pc-info {
+  padding: 18px 22px 22px;
+}
+.pc-role {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.pc-name {
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+.pc-sub {
+  font-family: var(--f-hand);
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+.pc-tape {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 64px;
+  height: 20px;
+  background: rgba(200, 180, 140, 0.55);
+  border-left: 1px solid rgba(58, 42, 26, 0.12);
+  border-right: 1px solid rgba(58, 42, 26, 0.12);
+}
+.pc-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: var(--f-mono);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 2;
+}
+.pc-close:hover {
+  background: var(--accent);
 }
 .chat-content {
   display: flex;
@@ -1914,6 +2029,73 @@ a {
   font-size: 13px;
   color: var(--ink-soft);
   line-height: 1.4;
+}
+
+/* ── HERO DESKTOP NAMEPLATE + FOOT (hidden by default, shown at ≥1025px) */
+.hero-banner {
+  display: none;
+}
+.hb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.hb-rule-thick {
+  border-top: 3px solid var(--ink);
+  padding-top: 2px;
+  border-bottom: 1px solid var(--ink);
+  height: 0;
+  margin: 0 0 6px;
+}
+.hb-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 4px 0;
+}
+.hb-name {
+  font-family: var(--f-display);
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+.hb-orn {
+  width: 100px;
+  height: auto;
+  color: var(--ink);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.hb-orn-flip {
+  transform: scaleX(-1);
+}
+.hb-rule-thin {
+  border-top: 1px solid rgba(58, 42, 26, 0.35);
+  margin: 6px 0 8px;
+}
+.hb-sub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.hb-dot {
+  font-size: 6px;
+  color: var(--accent);
+  opacity: 0.7;
 }
 
 /* ── SCROLL TO TOP */
@@ -1995,41 +2177,116 @@ footer {
 }
 .col-head {
   font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.3em;
+  font-size: 12px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.82;
   margin-bottom: 8px;
 }
 .col-link {
   display: block;
-  font-size: 14px;
-  padding: 2px 0;
-  opacity: 0.9;
+  font-size: 15px;
+  padding: 3px 0;
+  opacity: 1;
   text-decoration: none;
   color: var(--paper);
   transition: opacity 0.15s;
 }
 .col-link:hover {
-  opacity: 0.55;
+  opacity: 0.6;
 }
 .col-link.muted {
   opacity: 0.4;
   cursor: default;
   pointer-events: none;
 }
+.footer-seal {
+  text-align: center;
+  padding: 32px 0 28px;
+  border-top: 1px solid rgba(234, 223, 199, 0.12);
+  border-bottom: 1px solid rgba(234, 223, 199, 0.12);
+  margin-bottom: 24px;
+}
+.footer-motto {
+  display: block;
+  font-family: var(--f-hand);
+  font-size: clamp(28px, 3.5vw, 48px);
+  color: rgba(234, 223, 199, 0.9);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.footer-finis {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(234, 223, 199, 0.55);
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-template-rows: auto auto 1fr;
+  column-gap: 40px;
+}
+.footer-name { grid-column: 1; }
+.footer-sub  { grid-column: 1; }
+.footer-links { grid-column: 1; }
+.footer-note {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 1 / 4;
+  align-self: stretch;
+}
+.fn-inner {
+  flex: 1;
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.fn-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.fn-msg {
+  font-family: var(--f-hand);
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+.fn-sign {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  border-top: 1px dashed var(--rule);
+  padding-top: 8px;
+}
 .footer-bottom {
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   justify-content: space-between;
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.7;
   flex-wrap: wrap;
   gap: 8px;
+}
+.footer-bottom-email a {
+  color: inherit;
+  text-decoration: none;
+}
+.footer-bottom-email a:hover {
+  opacity: 0.7;
 }
 
 /* ── EASTER EGG OVERLAY */
@@ -2128,8 +2385,8 @@ footer {
 }
 .em-credit {
   font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-soft);
   margin-bottom: 16px;

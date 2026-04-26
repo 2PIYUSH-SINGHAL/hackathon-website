@@ -71,13 +71,26 @@
   function renderTimeline() {
     const el = document.getElementById("timelineTrack");
     if (!el) return;
+    let prevDay = null;
     el.innerHTML = CONFIG.timeline
       .map((row) => {
+        const day = row.time.startsWith("DAY 1") ? "1" : "2";
+        const sep =
+          day !== prevDay && prevDay !== null
+            ? `<div class="tl-day-sep"><span>§ DAY TWO</span></div>`
+            : "";
+        prevDay = day;
         const content = `<div class="tl-content"><div class="tl-time">${row.time}</div><div class="tl-head">${row.head}</div><div class="tl-desc">${row.desc}</div></div>`;
         if (row.side === "left") {
-          return `<div class="tl-item tl-above">${content}<div class="tl-stem"></div><div class="tl-dot"></div><div class="tl-void"></div></div>`;
+          return (
+            sep +
+            `<div class="tl-item tl-above" data-day="${day}">${content}<div class="tl-stem"></div><div class="tl-dot"></div><div class="tl-void"></div></div>`
+          );
         }
-        return `<div class="tl-item tl-below"><div class="tl-void"></div><div class="tl-dot"></div><div class="tl-stem"></div>${content}</div>`;
+        return (
+          sep +
+          `<div class="tl-item tl-below" data-day="${day}"><div class="tl-void"></div><div class="tl-dot"></div><div class="tl-stem"></div>${content}</div>`
+        );
       })
       .join("");
   }
@@ -137,7 +150,7 @@
       .map(
         (p) => `
       <div class="org-person" style="transform:rotate(${p.rotation})">
-        <div class="placeholder-img person-img" data-src="${p.image}"></div>
+        <div class="placeholder-img person-img" data-src="${p.image}"${p.facePosition ? ` data-bg-position="${p.facePosition}"` : ""}></div>
         <div class="person-role mono">${p.role}</div>
         <div class="person-name">${p.name}</div>
         <div class="person-sub">${p.sub}</div>
@@ -153,12 +166,21 @@
     el.innerHTML = CONFIG.team
       .map((p, i) => {
         const side = i % 2 === 0 ? "chat-left" : "chat-right";
+        const initials = p.name
+          .split(/[\s,]+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map((w) => w[0].toUpperCase())
+          .join("");
+        const rot = (Math.random() * 4 - 2).toFixed(2);
         return `
       <div class="chat-msg ${side}">
-        <div class="chat-avatar placeholder-img" data-src="${p.image}"></div>
+        <button class="chat-avatar" data-person="${i}" aria-label="View ${p.name}'s profile">
+          <span class="chat-initials">${initials}</span>
+        </button>
         <div class="chat-content">
           <div class="chat-name">${p.name}</div>
-          <div class="chat-bubble">
+          <div class="chat-bubble" style="transform:rotate(${rot}deg)">
             <span class="chat-role mono">${p.role}</span>
             <span class="chat-sub">${p.sub}</span>
           </div>
@@ -166,7 +188,31 @@
       </div>`;
       })
       .join("");
+
+    el.querySelectorAll(".chat-avatar[data-person]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openPersonCard(CONFIG.team[+btn.dataset.person]);
+      });
+    });
+  }
+
+  function openPersonCard(p) {
+    const overlay = document.getElementById("personCardOverlay");
+    const card = document.getElementById("personCard");
+    if (!overlay || !card) return;
+    card.innerHTML = `
+      <div class="pc-tape"></div>
+      <button class="pc-close" aria-label="Close">✕</button>
+      <div class="pc-photo placeholder-img" data-src="${p.image}"${p.facePosition ? ` data-bg-position="${p.facePosition}"` : ""}></div>
+      <div class="pc-info">
+        <div class="pc-role mono">${p.role}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-sub hand">${p.sub}</div>
+      </div>`;
+    overlay.classList.remove("hidden");
     applyImages();
+    card.querySelector(".pc-close").addEventListener("click", () => overlay.classList.add("hidden"));
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) overlay.classList.add("hidden"); }, { once: true });
   }
 
   function applyImages() {
@@ -176,7 +222,7 @@
       img.onload = () => {
         el.style.backgroundImage = `url('${src}')`;
         el.style.backgroundSize = "cover";
-        el.style.backgroundPosition = "center";
+        el.style.backgroundPosition = el.dataset.bgPosition || "center";
         el.classList.add("has-image");
       };
       img.src = src;
@@ -427,7 +473,10 @@
     }
 
     function fly() {
-      if (animId) { cancelAnimationFrame(animId); animId = null; }
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
       const hero = document.getElementById("hero");
       if (!hero) return;
       const heroH = hero.offsetHeight;
@@ -438,14 +487,16 @@
       const loopCount = Math.random() < 0.4 ? 1 : Math.random() < 0.65 ? 2 : 0;
       const loopStarts = [];
       if (loopCount >= 1) loopStarts.push(0.18 + Math.random() * 0.22);
-      if (loopCount >= 2) loopStarts.push(loopStarts[0] + 0.28 + Math.random() * 0.1);
+      if (loopCount >= 2)
+        loopStarts.push(loopStarts[0] + 0.28 + Math.random() * 0.1);
 
       function getXY(rawT) {
         let x = -50 + rawT * (heroW + 110);
-        let y = startY
-          + endDrift * rawT
-          + 50 * Math.sin(rawT * Math.PI * 2.3)
-          + 16 * Math.sin(rawT * Math.PI * 5.8 + 1.2);
+        let y =
+          startY +
+          endDrift * rawT +
+          50 * Math.sin(rawT * Math.PI * 2.3) +
+          16 * Math.sin(rawT * Math.PI * 5.8 + 1.2);
         for (const ls of loopStarts) {
           if (rawT >= ls && rawT <= ls + LOOP_DUR) {
             const lt = (rawT - ls) / LOOP_DUR;
@@ -458,7 +509,8 @@
       }
 
       let ts0 = null;
-      let prevX = -50, prevY = startY;
+      let prevX = -50,
+        prevY = startY;
       let smoothAngle = 0;
 
       function frame(ts) {
@@ -466,15 +518,19 @@
         const rawT = Math.min((ts - ts0) / DURATION, 1);
         const { x, y } = getXY(rawT);
 
-        const dx = x - prevX, dy = y - prevY;
+        const dx = x - prevX,
+          dy = y - prevY;
         let delta = Math.atan2(dy, dx) * (180 / Math.PI) - smoothAngle;
         if (delta > 180) delta -= 360;
         if (delta < -180) delta += 360;
         smoothAngle += delta * 0.13;
 
-        const opacity = rawT < 0.05 ? (rawT / 0.05) * 0.62
-                      : rawT > 0.9 ? ((1 - rawT) / 0.1) * 0.62
-                      : 0.62;
+        const opacity =
+          rawT < 0.05
+            ? (rawT / 0.05) * 0.62
+            : rawT > 0.9
+              ? ((1 - rawT) / 0.1) * 0.62
+              : 0.62;
 
         plane.style.left = x + "px";
         plane.style.top = y + "px";
@@ -488,7 +544,8 @@
           lastTrailTs = ts;
         }
 
-        prevX = x; prevY = y;
+        prevX = x;
+        prevY = y;
         if (rawT < 1) {
           animId = requestAnimationFrame(frame);
         } else {
@@ -558,7 +615,18 @@
   }
 
   function initKonami() {
-    const SEQ = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
+    const SEQ = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ];
     let idx = 0;
     document.addEventListener("keydown", (e) => {
       idx = e.key === SEQ[idx] ? idx + 1 : e.key === SEQ[0] ? 1 : 0;
@@ -607,9 +675,13 @@
         const crest = document.getElementById("crestImg");
         if (crest) {
           crest.style.transition = "filter 0.4s, box-shadow 0.4s";
-          crest.style.filter = "sepia(0) saturate(2) hue-rotate(0deg) contrast(1.2) brightness(1.4)";
+          crest.style.filter =
+            "sepia(0) saturate(2) hue-rotate(0deg) contrast(1.2) brightness(1.4)";
           crest.style.boxShadow = "0 0 40px 12px rgba(168,98,47,0.5)";
-          setTimeout(() => { crest.style.filter = ""; crest.style.boxShadow = ""; }, 2000);
+          setTimeout(() => {
+            crest.style.filter = "";
+            crest.style.boxShadow = "";
+          }, 2000);
         }
       }
       if (buf.endsWith("debug")) {
@@ -690,11 +762,14 @@
   function initLogoEgg() {
     const logo = document.getElementById("navLogo");
     if (!logo) return;
-    let clicks = 0, timer;
+    let clicks = 0,
+      timer;
     logo.addEventListener("click", () => {
       clicks++;
       clearTimeout(timer);
-      timer = setTimeout(() => { clicks = 0; }, 600);
+      timer = setTimeout(() => {
+        clicks = 0;
+      }, 600);
       if (clicks >= 3) {
         clicks = 0;
         clearTimeout(timer);
@@ -720,14 +795,16 @@
     });
 
     // Click the footer motto
-    document.querySelector(".footer-bottom [data-cfg='organizer.motto']")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector(".footer-bottom [data-cfg='organizer.motto']")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">${CONFIG.organizer.mottoLine1}<br>${CONFIG.organizer.mottoLine2}</div>
         <div class="em-trans">${CONFIG.organizer.motto}.</div>
         <div class="em-note">These words have been on the Welham gates since 1937. They fit a hackathon rather well, we think.</div>
         <div class="em-credit">${CONFIG.organizer.school} · Est. 1937</div>
       </div>`);
-    });
+      });
 
     // Click the countdown label
     document.querySelector(".cd-label-top")?.addEventListener("click", () => {
@@ -740,11 +817,14 @@
     });
 
     // Click the registration CTA button 4 times
-    let regClicks = 0, regTimer;
+    let regClicks = 0,
+      regTimer;
     document.querySelector(".btn-primary")?.addEventListener("click", (e) => {
       regClicks++;
       clearTimeout(regTimer);
-      regTimer = setTimeout(() => { regClicks = 0; }, 800);
+      regTimer = setTimeout(() => {
+        regClicks = 0;
+      }, 800);
       if (regClicks >= 4) {
         regClicks = 0;
         e.preventDefault();
@@ -760,14 +840,16 @@
 
   function initMoreClickEggs() {
     // Scroll indicator ↓
-    document.querySelector(".scroll-indicator")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector(".scroll-indicator")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">NOTED.</div>
         <div class="em-trans">You could have just scrolled.</div>
         <div class="em-note">But we respect the commitment to clicking every single thing on the page. Carry on.</div>
         <div class="em-credit">— the scroll wheel</div>
       </div>`);
-    });
+      });
 
     // Click "§ THEME REVEAL" label
     document.querySelector(".theme-label")?.addEventListener("click", () => {
@@ -780,14 +862,16 @@
     });
 
     // Click the tape on the crest card
-    document.querySelector(".crest-card .tape")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector(".crest-card .tape")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">DON'T.</div>
         <div class="em-trans">This holds the whole thing together.</div>
         <div class="em-note">Some things work precisely because nobody asks why. Leave the tape alone.</div>
         <div class="em-credit">— the tape</div>
       </div>`);
-    });
+      });
 
     // Click the supply divider "&"
     document.querySelector(".supply-divider")?.addEventListener("click", () => {
@@ -813,7 +897,9 @@
     document.addEventListener("click", (e) => {
       if (e.target.classList.contains("tick")) {
         e.target.textContent = "✓";
-        setTimeout(() => { e.target.textContent = "✗"; }, 1800);
+        setTimeout(() => {
+          e.target.textContent = "✗";
+        }, 1800);
         showEaster(`<div class="easter-motto">
           <div class="em-latin">THAT'S THE ONE.</div>
           <div class="em-trans">Mark it. Own it. Build it.</div>
@@ -836,14 +922,16 @@
     });
 
     // Click the footer copyright
-    document.querySelector(".footer-bottom span:first-child")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector(".footer-bottom span:first-child")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">MMXXVI.</div>
         <div class="em-trans">2026, in Roman numerals.</div>
         <div class="em-note">First edition. Everything that follows starts here. Welcome to the beginning of something.</div>
         <div class="em-credit">— hack.welham</div>
       </div>`);
-    });
+      });
 
     // Click the crest label below the hero crest
     document.querySelector(".crest-label")?.addEventListener("click", () => {
@@ -856,14 +944,16 @@
     });
 
     // Click the "§ three tracks, one night" meta in hero
-    document.querySelector(".hero-meta span:last-child")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector(".hero-meta span:last-child")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">THREE TRACKS.</div>
         <div class="em-trans">One night. Zero excuses.</div>
         <div class="em-note">AI. Web. Cloud. Pick the one that makes you most nervous. That's probably the right one.</div>
         <div class="em-credit">— a friendly challenge</div>
       </div>`);
-    });
+      });
   }
 
   function initEvenMoreEggs() {
@@ -879,7 +969,10 @@
 
     // Click "OPEN" stamp on a track card
     document.addEventListener("click", (e) => {
-      if (e.target.classList.contains("stamp") && e.target.textContent.trim() === "OPEN") {
+      if (
+        e.target.classList.contains("stamp") &&
+        e.target.textContent.trim() === "OPEN"
+      ) {
         showEaster(`<div class="easter-motto">
           <div class="em-latin">OPEN.</div>
           <div class="em-trans">For everyone. No prerequisites. No gatekeeping.</div>
@@ -935,12 +1028,15 @@
     });
 
     // Triple-click a polaroid in judges section
-    let polaroidClicks = 0, polaroidTimer = null;
+    let polaroidClicks = 0,
+      polaroidTimer = null;
     document.addEventListener("click", (e) => {
       if (e.target.closest(".polaroid")) {
         polaroidClicks++;
         clearTimeout(polaroidTimer);
-        polaroidTimer = setTimeout(() => { polaroidClicks = 0; }, 700);
+        polaroidTimer = setTimeout(() => {
+          polaroidClicks = 0;
+        }, 700);
         if (polaroidClicks >= 3) {
           polaroidClicks = 0;
           clearTimeout(polaroidTimer);
@@ -955,14 +1051,16 @@
     });
 
     // Click the FAQ section title
-    document.querySelector("#faq .section-title")?.addEventListener("click", () => {
-      showEaster(`<div class="easter-motto">
+    document
+      .querySelector("#faq .section-title")
+      ?.addEventListener("click", () => {
+        showEaster(`<div class="easter-motto">
         <div class="em-latin">F. A. Q.</div>
         <div class="em-trans">Frequently. Asked. Questions.</div>
         <div class="em-note">If your question isn't in there, email us. We wrote this list by actually reading every message we got. There are no silly questions.</div>
         <div class="em-credit">— ${CONFIG.event.email}</div>
       </div>`);
-    });
+      });
 
     // Click reg step numbers
     document.addEventListener("click", (e) => {
@@ -1099,7 +1197,11 @@
     const encoded = CONFIG.event && CONFIG.event.themeEncoded;
     if (!encoded) return;
     let theme;
-    try { theme = atob(encoded); } catch (e) { return; }
+    try {
+      theme = atob(encoded);
+    } catch (e) {
+      return;
+    }
 
     const banner = document.getElementById("theme-announce");
     if (!banner || banner.classList.contains("theme-revealed")) return;
@@ -1112,7 +1214,10 @@
       const cdRow = banner.querySelector(".cd-row");
       if (text) text.innerHTML = "The theme for this year's hackathon is —";
       if (when) when.style.display = "none";
-      if (label) { label.textContent = "§ THE THEME"; label.classList.add("theme-reveal-label"); }
+      if (label) {
+        label.textContent = "§ THE THEME";
+        label.classList.add("theme-reveal-label");
+      }
       if (cdRow) cdRow.innerHTML = `<div class="theme-word">${theme}</div>`;
     }
 
@@ -1137,7 +1242,9 @@
     const mins = document.getElementById("cd-mins");
     const secs = document.getElementById("cd-secs");
     if (!days || !hours || !mins || !secs) return;
-    function pad(n) { return String(n).padStart(2, "0"); }
+    function pad(n) {
+      return String(n).padStart(2, "0");
+    }
     let revealed = false;
     function tick() {
       const diff = target - Date.now();
@@ -1146,7 +1253,10 @@
         hours.textContent = "00";
         mins.textContent = "00";
         secs.textContent = "00";
-        if (!revealed) { revealed = true; revealTheme(true); }
+        if (!revealed) {
+          revealed = true;
+          revealTheme(true);
+        }
         return;
       }
       days.textContent = pad(Math.floor(diff / 86400000));
@@ -1164,21 +1274,34 @@
     const prev = document.getElementById("htlPrev");
     const next = document.getElementById("htlNext");
     const step = 440;
-    prev?.addEventListener("click", () => scroll.scrollBy({ left: -step, behavior: "smooth" }));
-    next?.addEventListener("click", () => scroll.scrollBy({ left: step, behavior: "smooth" }));
-    let isDown = false, startX, scrollLeft;
+    prev?.addEventListener("click", () =>
+      scroll.scrollBy({ left: -step, behavior: "smooth" }),
+    );
+    next?.addEventListener("click", () =>
+      scroll.scrollBy({ left: step, behavior: "smooth" }),
+    );
+    let isDown = false,
+      startX,
+      scrollLeft;
     scroll.addEventListener("mousedown", (e) => {
       isDown = true;
       scroll.classList.add("grabbing");
       startX = e.pageX - scroll.offsetLeft;
       scrollLeft = scroll.scrollLeft;
     });
-    scroll.addEventListener("mouseleave", () => { isDown = false; scroll.classList.remove("grabbing"); });
-    scroll.addEventListener("mouseup", () => { isDown = false; scroll.classList.remove("grabbing"); });
+    scroll.addEventListener("mouseleave", () => {
+      isDown = false;
+      scroll.classList.remove("grabbing");
+    });
+    scroll.addEventListener("mouseup", () => {
+      isDown = false;
+      scroll.classList.remove("grabbing");
+    });
     scroll.addEventListener("mousemove", (e) => {
       if (!isDown) return;
       e.preventDefault();
-      scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2;
+      scroll.scrollLeft =
+        scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.2;
     });
   }
 
@@ -1186,10 +1309,19 @@
     const btn = document.getElementById("scrollTop");
     if (!btn) return;
     const hero = document.getElementById("hero");
-    window.addEventListener("scroll", () => {
-      btn.classList.toggle("visible", window.scrollY > (hero?.offsetHeight || 500));
-    }, { passive: true });
-    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    window.addEventListener(
+      "scroll",
+      () => {
+        btn.classList.toggle(
+          "visible",
+          window.scrollY > (hero?.offsetHeight || 500),
+        );
+      },
+      { passive: true },
+    );
+    btn.addEventListener("click", () =>
+      window.scrollTo({ top: 0, behavior: "smooth" }),
+    );
   }
 
   function init() {
