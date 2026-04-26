@@ -50,7 +50,7 @@ const CONFIG = {
     { value: "2–4", label: "per team", sub: "same school", countable: false },
     { value: "9–12", label: "class band", sub: "any school", countable: false },
     {
-      value: "1",
+      value: "2",
       label: "team / school",
       sub: "one entry only",
       countable: false,
