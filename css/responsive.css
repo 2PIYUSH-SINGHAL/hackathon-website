@@ -676,6 +676,78 @@
 /* ── iPad-only: bigger hero + scoreboard countdown ── */
 @media (min-width: 768px) and (max-width: 1024px) {
 
+  /* navbar: 2-row editorial strip — no hamburger */
+  .nav-inner {
+    position: relative;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 0;
+  }
+  .nav-logo {
+    height: 58px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+  }
+  .nav-toggle {
+    display: none;
+  }
+  .nav-links {
+    display: flex !important;
+    position: static !important;
+    flex-direction: row !important;
+    background: transparent !important;
+    border-top: 1px solid var(--rule) !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    height: 46px;
+    width: 100%;
+    justify-content: stretch;
+  }
+  .nav-links li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: none !important;
+    border-right: 1px dashed rgba(58, 42, 26, 0.22);
+  }
+  .nav-links li:last-child {
+    /* Register CTA — pulled into top row, right side */
+    position: absolute;
+    top: 0;
+    right: 28px;
+    height: 58px;
+    flex: none;
+    border-right: none;
+  }
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    height: 100%;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    width: 100%;
+  }
+  .nav-links a::after {
+    display: none;
+  }
+  .nav-cta {
+    padding: 9px 20px !important;
+    margin: 0 !important;
+    font-size: 12px !important;
+    border-radius: 2px;
+    display: inline-flex !important;
+    align-items: center;
+  }
+
   /* hero: scale up for larger iPad canvas */
   #hero {
     padding: 64px 48px 88px;
