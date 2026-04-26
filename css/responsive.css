@@ -718,45 +718,55 @@
     font-size: 20px;
   }
 
-  /* theme reveal: dispatch-board layout */
+  /* theme reveal: herald / front-page splash layout */
   #theme-announce {
     padding: 0;
   }
   .theme-inner {
     flex-direction: column;
-    align-items: stretch;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     gap: 0;
     max-width: 100%;
   }
   .theme-left {
-    display: grid;
-    grid-template-areas: "label when" "text text";
-    grid-template-columns: 1fr auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px 0;
-    padding: 28px 48px;
-    border-bottom: 1px solid rgba(234, 223, 199, 0.12);
-    text-align: left;
+    text-align: center;
+    width: 100%;
+    padding: 44px 56px 40px;
+    border-bottom: 3px double rgba(234, 223, 199, 0.18);
+    gap: 0;
   }
   .theme-label {
-    grid-area: label;
-    font-size: 13px;
-    margin-bottom: 0;
+    grid-area: unset;
+    font-size: 11px;
+    letter-spacing: 0.55em;
+    margin-bottom: 32px;
     align-self: center;
-  }
-  .theme-when {
-    grid-area: when;
-    font-size: 14px;
-    margin-top: 0;
-    align-self: center;
-    text-align: right;
-    color: rgba(234, 223, 199, 0.75);
+    color: rgba(234, 223, 199, 0.4);
   }
   .theme-text {
-    grid-area: text;
-    font-size: 26px;
-    text-align: left;
+    grid-area: unset;
+    font-size: clamp(26px, 4vw, 40px);
+    font-style: italic;
+    text-align: center;
+    line-height: 1.35;
+    max-width: 580px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(234, 223, 199, 0.12);
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .theme-when {
+    grid-area: unset;
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    color: rgba(234, 223, 199, 0.5);
+    margin-top: 28px;
+    text-align: center;
+    align-self: center;
   }
   .theme-divider {
     display: none;
@@ -765,14 +775,19 @@
     width: 100%;
   }
   .cd-label-top {
-    display: none;
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.55em;
+    color: rgba(234, 223, 199, 0.35);
+    padding: 22px 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(234, 223, 199, 0.12);
   }
   .cd-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
     border: none;
-    border-top: 1px solid rgba(234, 223, 199, 0.12);
     justify-content: unset;
   }
   .cd-unit {
@@ -782,19 +797,20 @@
     justify-content: center;
     flex: none;
     min-width: 0;
-    border-right: 1px solid rgba(234, 223, 199, 0.12);
-    padding: 40px 8px;
+    border-right: 1px solid rgba(234, 223, 199, 0.1);
+    padding: 48px 8px 40px;
   }
   .cd-unit:last-child {
     border-right: none;
   }
   .cd-num {
-    font-size: clamp(72px, 12vw, 108px);
+    font-size: clamp(88px, 15vw, 130px);
   }
   .cd-lbl {
-    font-size: 13px;
+    font-size: 11px;
     margin-top: 12px;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.55em;
+    color: rgba(234, 223, 199, 0.35);
   }
   .cd-sep {
     display: none;
