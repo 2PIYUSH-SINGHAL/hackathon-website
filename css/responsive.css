@@ -749,7 +749,6 @@
   }
   .nav-toggle {
     display: flex;
-    order: -1;
     z-index: 1;
   }
   /* drawer — slides in from right */
