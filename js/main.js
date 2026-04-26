@@ -281,6 +281,15 @@
     const nav = document.getElementById("navbar");
     const toggle = document.getElementById("navToggle");
     const links = document.getElementById("navLinks");
+    const overlay = document.getElementById("navOverlay");
+
+    function closeNav() {
+      links.classList.remove("open");
+      toggle?.classList.remove("active");
+      toggle?.setAttribute("aria-expanded", "false");
+      overlay?.classList.remove("active");
+      document.body.style.overflow = "";
+    }
 
     window.addEventListener(
       "scroll",
@@ -294,13 +303,14 @@
       const open = links.classList.toggle("open");
       toggle.classList.toggle("active", open);
       toggle.setAttribute("aria-expanded", String(open));
+      overlay?.classList.toggle("active", open);
+      document.body.style.overflow = open ? "hidden" : "";
     });
 
+    overlay?.addEventListener("click", closeNav);
+
     document.querySelectorAll("#navLinks a").forEach((a) => {
-      a.addEventListener("click", () => {
-        links.classList.remove("open");
-        toggle?.classList.remove("active");
-      });
+      a.addEventListener("click", closeNav);
     });
   }
 
