@@ -249,6 +249,7 @@
         el.style.backgroundPosition = el.dataset.bgPosition || "center";
         el.classList.add("has-image");
       };
+      img.onerror = () => {};
       img.src = src;
     });
   }

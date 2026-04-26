@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <rect width="300" height="400" fill="#e8e0d4"/>
+  <rect x="1" y="1" width="298" height="398" fill="none" stroke="#c8b49a" stroke-width="1" stroke-dasharray="6,4"/>
+  <circle cx="150" cy="155" r="52" fill="none" stroke="#c8b49a" stroke-width="1.5"/>
+  <circle cx="150" cy="138" r="28" fill="#c8b49a" opacity="0.5"/>
+  <ellipse cx="150" cy="185" rx="46" ry="26" fill="#c8b49a" opacity="0.5"/>
+  <text x="150" y="290" font-family="Georgia,serif" font-size="13" fill="#a89070" text-anchor="middle" letter-spacing="2">PHOTO</text>
+  <text x="150" y="310" font-family="Georgia,serif" font-size="11" fill="#b8a088" text-anchor="middle">coming soon</text>
+</svg>
