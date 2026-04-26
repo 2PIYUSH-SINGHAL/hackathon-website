@@ -749,7 +749,9 @@
   }
   .nav-toggle {
     display: flex;
-    z-index: 1;
+    margin-left: auto;
+    z-index: 103;
+    position: relative;
   }
   /* drawer — slides in from right */
   .nav-links {
