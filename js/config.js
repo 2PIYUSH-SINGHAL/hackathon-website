@@ -14,7 +14,7 @@ const CONFIG = {
     entryFee: "₹499",
     themeEncoded: "YXBwbGU=",
     // Theme reveal time in IST (UTC+5:30) — format: "YYYY-MM-DDTHH:MM:SS+05:30"
-    themeRevealUTC: new Date("2026-04-26T15:50:00+05:30").getTime(),
+    themeRevealUTC: new Date("2026-07-31T08:00:00+05:30").getTime(),
   },
 
   assets: {
@@ -77,11 +77,11 @@ const CONFIG = {
     },
     {
       num: "03",
-      short: "CLOUD",
-      full: "The Cloud",
+      short: "GAME",
+      full: "Game Development",
       accent: true,
       rotation: "-1.5deg",
-      items: ["Infrastructure", "DevOps & deploy", "Scale & observability"],
+      items: ["2D / 3D games", "Game mechanics & design", "★ Bonus points for polish"],
     },
   ],
 
@@ -111,6 +111,7 @@ const CONFIG = {
       num: "№III",
       title: "Media",
       time: "Passive",
+      passive: true,
       body: "Public dev blogging contest. Post a build update thread. Best post wins.",
     },
   ],
@@ -136,21 +137,21 @@ const CONFIG = {
     },
     {
       side: "right",
+      time: "DAY 1 - 2",
+      head: "Media",
+      desc: "Public dev blogging contest.",
+    },
+    {
+      side: "left",
       time: "DAY 2 · 00:00",
       head: "The Auction",
       desc: "Bid for tools and ideas with a fixed token budget.",
     },
     {
-      side: "left",
+      side: "right",
       time: "DAY 2 · 03:00",
       head: "Constraints",
       desc: "Draw a random constraint for your build.",
-    },
-    {
-      side: "right",
-      time: "DAY 2 · 06:00",
-      head: "Media",
-      desc: "Public dev blogging contest.",
     },
     {
       side: "left",

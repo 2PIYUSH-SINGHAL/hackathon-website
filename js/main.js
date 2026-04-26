@@ -54,10 +54,10 @@
     const miniHTML = CONFIG.miniEvents
       .map(
         (me) => `
-      <div class="mini-event-card">
+      <div class="mini-event-card${me.passive ? " passive" : ""}">
         <div class="me-row-top">
           <div class="me-num">${me.num}</div>
-          <span class="me-badge mono">MINI</span>
+          <span class="me-badge mono">${me.passive ? "PASSIVE" : "MINI"}</span>
         </div>
         <div class="me-title">${me.title}</div>
         <div class="me-time mono">${me.time}</div>

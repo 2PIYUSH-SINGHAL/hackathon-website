@@ -737,45 +737,45 @@
     height: 64px;
   }
   .nav-logo {
-    font-size: 17px;
-    gap: 8px;
+    font-size: 20px;
+    gap: 10px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
   .nav-crest {
-    width: 32px;
-    height: 32px;
+    width: 60px;
+    height: 60px;
   }
   .nav-toggle {
     display: flex;
     order: -1;
     z-index: 1;
   }
-  /* drawer */
+  /* drawer — slides in from right */
   .nav-links {
     display: flex !important;
     position: fixed !important;
     top: 0 !important;
-    left: -300px !important;
+    right: -300px !important;
     bottom: 0 !important;
     width: 280px !important;
     height: 100dvh !important;
     flex-direction: column !important;
     background: var(--paper) !important;
-    border-right: 1.5px solid var(--rule) !important;
+    border-left: 1.5px solid var(--rule) !important;
     border-bottom: none !important;
     box-shadow: none !important;
     padding: 88px 0 40px !important;
     gap: 0 !important;
-    transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    transition: right 0.28s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.28s !important;
     z-index: 102 !important;
     overflow-y: auto !important;
   }
   .nav-links.open {
-    left: 0 !important;
-    box-shadow: 8px 0 40px rgba(58, 42, 26, 0.18) !important;
+    right: 0 !important;
+    box-shadow: -8px 0 40px rgba(58, 42, 26, 0.18) !important;
   }
   .nav-links li {
     border-bottom: 1px solid rgba(58, 42, 26, 0.1) !important;
@@ -807,15 +807,13 @@
     border-radius: 2px;
     width: calc(100% - 48px) !important;
   }
-  /* overlay */
+  /* overlay — z-index 99 so navbar stacking context (z-index 100) stays above it */
   #navOverlay {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(30, 20, 10, 0.4);
-    z-index: 101;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(30, 20, 10, 0.35);
+    z-index: 99;
   }
   #navOverlay.active {
     display: block;
