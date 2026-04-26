@@ -377,7 +377,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 6px;
+    gap: 14px;
   }
 
   /* ── global iPad font scale-up ── */
