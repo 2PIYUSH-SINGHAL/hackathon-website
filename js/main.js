@@ -160,6 +160,21 @@
     applyImages();
   }
 
+  function renderFooterPinboard() {
+    const el = document.querySelector(".footer-pinboard");
+    if (!el) return;
+    el.innerHTML = CONFIG.team.map((p) => {
+      const rot = p.rotation || "0deg";
+      return `
+        <div class="fp-note" style="transform:rotate(${rot})">
+          <div class="fp-pin"></div>
+          <div class="fp-role">${p.role}</div>
+          <div class="fp-name">${p.name.split(",")[0]}</div>
+          <div class="fp-msg">${p.note || ""}</div>
+        </div>`;
+    }).join("");
+  }
+
   function renderOrgChat() {
     const el = document.getElementById("orgChat");
     if (!el) return;
@@ -1334,6 +1349,7 @@
     renderFaq();
     renderTeam();
     renderOrgChat();
+    renderFooterPinboard();
 
     initFaq();
     initSmoothScroll();

@@ -272,6 +272,7 @@ const CONFIG = {
       sub: "Head, Computer Science",
       image: "assets/images/team-1.jpg",
       rotation: "-1.2deg",
+      note: "proud of every one of you. go build.",
     },
     {
       role: "Faculty Co-Lead",
@@ -279,6 +280,7 @@ const CONFIG = {
       sub: "Computer Science Dept.",
       image: "assets/images/team-2.jpg",
       rotation: "1.2deg",
+      note: "the best code is written with purpose.",
     },
     {
       role: "Lead Organiser",
@@ -288,6 +290,7 @@ const CONFIG = {
         "assets/images/654080599_947231991025727_3647323680011143927_n.jpg",
       facePosition: "50% 18%",
       rotation: "-1.2deg",
+      note: "months of work came down to this. make it count.",
     },
     {
       role: "Tracks & Judging",
@@ -295,6 +298,7 @@ const CONFIG = {
       sub: "Tech Society",
       image: "assets/images/team-4.jpg",
       rotation: "1.2deg",
+      note: "we're watching carefully. impress us.",
     },
     {
       role: "Logistics & Mentors",
@@ -302,6 +306,7 @@ const CONFIG = {
       sub: "Tech Society",
       image: "assets/images/team-5.jpg",
       rotation: "-1.2deg",
+      note: "we've got you covered. just build.",
     },
     {
       role: "Design & Outreach",
@@ -309,6 +314,7 @@ const CONFIG = {
       sub: "Tech Society",
       image: "assets/images/team-6.jpg",
       rotation: "1.2deg",
+      note: "make it look as good as it works.",
     },
   ],
 };
