@@ -778,16 +778,15 @@
     display: none;
   }
 
-  /* footer note: fill all available vertical space */
+  /* footer note: fixed 200px square */
   .footer-content {
     grid-template-columns: 1fr 200px;
     column-gap: 32px;
-    align-items: stretch;
   }
   .footer-note {
-    width: auto;
-    height: auto;
-    align-self: stretch;
+    width: 200px;
+    height: 200px;
+    align-self: start;
   }
   .fn-msg {
     font-size: 20px;
